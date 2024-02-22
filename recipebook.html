@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #recipeOptions {
+            margin-top: 20px;
+        }
+
+        #recipeDetails {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Choose a Recipe from the Menu below:</h1>
+
+    <label for="recipeOptions">Recipes:</label>
+    <select id="recipeOptions" onchange="showRecipe()">
+        <option value="" disabled selected>Select a recipe</option>
+        <option value="Chicken Katsu Curry">Chicken Katsu Curry</option>
+        <option value="Chicken Power Bowls">Chicken Power Bowls</option>
+        <option value="5050 meatballs">5050 Meatballs</option>
+        <option value="Herb Roasted Chicken Breast">Herb Roasted Chicken Breast</option>
+        <option value="Pad Krapow">Pad Krapow</option>
+        <option value="Hashbrowns with Poached Eggs">Hashbrowns with Poached Eggs</option>
+        <option value="Hamburger Patties">Hamburger Patties</option>
+        <option value="Thai Peanut Sauce">Thai Peanut Sauce</option>
+    </select>
+
+    <div id="recipeDetails"></div>
+
+    <script>
+        var recipes = {
+            "Chicken Katsu Curry": {
+                "ingredients": {
+                    "onion": "1",
+                    "garlic cloves": "2",
+                    "peeled ginger": "2.5 cm",
+                    "turmeric": "1 tsp",
+                    "mild curry powder": "2 heaping tbsp",
+                    "plain flour": "1 tbsp",
+                    "chicken stock": "300ml",
+                    "coconut milk": "200ml can",
+                    "soy sauce": "1 tbsp",
+                    "sugar": "1 tbsp",
+                    "Chicken Breast": "2",
+                    "Salt": "1/2 tsp",
+                    "Pepper": "1/4 tsp",
+                    "Flour (for dusting chicken)": "as needed",
+                    "Egg (beaten)": "1",
+                    "Panko Breadcrumbs": "1 cup",
+                    "Oil (for frying)": "as needed",
+                    "Rice": "1 cup"
+                },
+                "directions": [
+                    "1. Finely chop onion, garlic, and ginger.",
+                    "2. Heat oil and fry ingredients with turmeric and curry powder.",
+                    "3. Add flour to make a roux, then add stock until you have a sauce.",
+                    "4. Finish with coconut milk, soy sauce, and sugar.",
+                    "5. Hammer out the chicken between two pieces of greaseproof paper until doubled in size.",
+                    "6. Heat the oil in a deep-sided frying pan.",
+                    "7. Set up wide bowls with flour, egg, and breadcrumbs.",
+                    "8. Flour, egg, then crumb the chicken and fry each side for 2 mins.",
+                    "9. Serve with rice and sauce ladled over the top."
+                ]
+            },
+            "Chicken Power Bowls": {
+                "ingredients": {
+                    "Chickpeas": "15-ounce can",
+                    "Garlic clove": "1",
+                    "Olive Oil": "1 tablespoon",
+                    "Smoked or regular Paprika": "1/4 teaspoon",
+                    "Kosher Salt": "1/2 teaspoon",
+                    "lemon wedge": "1",
+                    "Broccoli": "1 cup, chopped",
+                    "Kale": "2 cups",
+                    "Chicken": "1 breast, grilled and sliced",
+                    "Carrot": "1 cup, shredded",
+                    "Rice": "1 cup, cooked",
+                    "Carrots": "1 pound, julienned",
+                    "Medjool Dates": "3, pitted and diced",
+                    "Pistachio": "¼ cup chopped",
+                    "Cilantro": "⅓ cup finely chopped",
+                    "Mint Leaves": "¼ cup",
+                    "Extra-Virgin Olive Oil": "2 tablespoons",
+                    "Lemon Juice": "2 tablespoons",
+                    "Tahini": "1 tablespoon",
+                    "Honey": "1 tablespoon",
+                    "Garlic Clove": "1 grated",
+                    "Cumin": "¼ teaspoon",
+                    "Sea salt": "¼ teaspoon"
+                },
+                "directions": [
+                    "1. Drain and rinse the chickpeas.",
+                    "2. Mince the garlic.",
+                    "3. In a large skillet, heat the olive oil over medium heat. Add the garlic and sauté for 1 minute until fragrant but before it browns.",
+                    "4. Add the chickpeas, smoked paprika, salt, and several grinds of black pepper. Cook 2 minutes until warmed through. Serve immediately. Keep leftovers refrigerated for 2 to 3 days.",
+                    "5. Drizzle olive oil over broccoli and toss with a tablespoon of minced garlic.",
+                    "6. Remove large stems from kale leaves.",
+                    "7. Crush leaves by hand until a dark green color.",
+                    "8. Drizzle the desired amount of dressing over the kale and toss.",
+                    "9. Grill the chicken breast until fully cooked. Slice it into thin strips.",
+                    "10. Place the julienned carrots in a large bowl and sprinkle the dates on top.",
+                    "11. Make the dressing: In a small bowl, whisk together the olive oil, lemon juice, tahini, honey, garlic, cumin, and salt.",
+                    "12. Drizzle the dressing over the carrots and toss to coat.",
+                    "13. Sprinkle on the pistachios and cilantro and toss again.",
+                    "14. Sprinkle the mint leaves and serve.",
+                    "15. Cook the rice according to package instructions."
+                ]
+            },
+            "5050 meatballs": {
+                "ingredients": {
+                    "Ground Beef": "1lb",
+                    "Ground Pork": "1lb",
+                    "Herbs de Provence": "1.5 tbs",
+                    "Minced Garlic": "2 tbs minced or 3-4 cloves",
+                    "Salt": "2 tsp",
+                    "Pepper": "2 tsp",
+                    "Large Egg": "1",
+                    "Onion Powder": "1 tbs",
+                    "Parmigiano Reggiano": "1 cup"
+                },
+                "directions": [
+                    "Heat oven to 400 degrees.",
+                    "Mix all ingredients together and roll into 1/2-1 inch diameter balls depending on preference.",
+                    "Spread olive oil on a baking sheet and line up meatballs.",
+                    "Put meatballs in the oven for 20 minutes or until darkened to your preference.",
+                    "Serve with red pasta sauce and your favorite pasta shape and enjoy!"
+                ]
+            },
+            "Herb Roasted Chicken Breast": {
+                "ingredients": {
+                    "Butter (room temp)": "3 Tbsp",
+                    "Minced Garlic": "2 cloves",
+                    "Dried Basil": "1 tsp",
+                    "Dried Thyme": "1 tsp",
+                    "Dried Rosemary": "1 tsp",
+                    "Salt": "1/2 tsp",
+                    "Black Pepper": "1/2 tsp",
+                    "Chicken Breasts (butterflied)": "2 breasts"
+                },
+                "directions": [
+                    "Preheat the oven to 275ºF. Remove the chicken from the refrigerator and allow it to warm slightly.",
+                    "In a small bowl, stir together the butter, minced garlic, basil, thyme, rosemary, salt, and pepper. Rosemary pieces can be quite large, so either chop or crumble the dried pieces with your hands before adding them to the mix.",
+                    "Place the chicken on a cutting board and pat it dry on both sides with a clean paper towel. Smear the butter herb mixture over both sides of the chicken. Drying the meat will help the butter herb mixture stick. If the meat is too cold, it will form condensation as you rub the butter mixture over the surface and the butter will not stick.",
+                    "Place the seasoned chicken pieces in a casserole dish that is deep enough to fully contain the chicken. Cover tightly with foil, or with the dish's lid if there is one. Bake the chicken in the preheated oven for 90 minutes, basting once halfway through.",
+                    "After 90 minutes, remove the foil, baste again, and adjust the oven’s temperature to 425ºF. Bake the chicken at 425ºF for 20 minutes without the foil, or until the skin is deep golden brown and crispy. Remove the chicken from the oven and let rest for 5-10 minutes.",
+                    "Slice the breasts or pull the meat from the bone. Reserve the juices from the bottom of the casserole dish for drizzling over top of the meat."
+                ]
+            },
+            "Pad Krapow": {
+                "ingredients": {
+                    "Thai Chile Peppers": "5",
+                    "Garlic Cloves": "6",
+                    "Olive Oil": "3 tablespoons",
+                    "Ground Chicken": "1 lb",
+                    "Oyster Sauce": "2 tablespoons",
+                    "Fish Sauce": "3 tablespoons",
+                    "Sugar": "2 tablespoons",
+                    "Basil Leaves": "1/4 cup",
+                    "Eggs": "4 large eggs",
+                    "Jasmine Rice": "8 Cups"
+                },
+                "directions": [
+                    "Roughly chop Thai chilies and garlic before adding them to a mortar and pestle. Smash using an up and down motion with a pestle until combined (mixture doesn't have to be ground into a paste), about 1 minute. ",
+                    "Heat 1 tablespoon of the oil in wok over high heat until shimmering. Add chile mixture and stir-fry until fragrant, about 30 seconds. ",
+                    "Add ground chicken to wok, and stir-fry until meat turns opaque, about 5 minutes. ",
+                    "Stir in oyster sauce, fish sauce, and sugar and cook until liquids evaporate. ",
+                    "Turn off heat, transfer chicken mixture to a large bowl and immediately stir in basil leaves. ",
+                    "In the same wok, heat remaining 2 tablespoons of oil over medium-high heat until shimmering. Crack an egg into wok. As egg cooks, spoon oil over yolk. Cook egg until edges are crispy and whites are cooked through but yolk is still runny, about 1 minute. ",
+                    "Repeat with remaining eggs. Divide rice and chicken mixture between 4 bowls. Top each with an egg and serve immediately. "
+
+                ]
+            },
+            "Hashbrowns with Poached Eggs": {
+                "ingredients": {
+                    "Bacon": "4 Slices",
+                    "Medium Gold Potatoes": "4 Potatos",
+                    "Olive Oil": "to shallow-fry",
+                    "Spinach Leaves": "1/2 cup",
+                    "White Vineger": "1 tbsp",
+                    "Large Eggs": "4 Eggs"
+                },
+                "directions": [
+                    "Use food processor to on Julienne setting and insert potatos. Rinse potatos till water is clear and squeeze out as much excess water as possible with your hands.",
+                    "Place potatos in a bowl and season with salt and pepper and onion powder to taste (or an actual red onion if ya nasty).",
+                    "Mix in flower and egg until equally distributed",
+                    "Heat a little olive oil in a medium frying pan over medium heat. Scoop potato mixture with into small portions (1/4 cup each). Spoon as many portions into the pan you can fit and use the back of a spatula to flatten into 8cm discs. Cook for 3 mins each side or until golden brown and crisp. Repeat with remaining mixture.",
+                    "Add spinach to the pan. Cook, tossing, for 2-3 mins or until spinach just wilts.",
+                    "While the hash browns are cooking, fill a saucepan two-thirds full with water. Add the vinegar and bring to the boil over high heat. Reduce heat to low. Break an egg into a cup. Stir the water in the saucepan to create a whirlpool. Carefully pour the egg into the centre of the whirlpool. Cook, without stirring, for 3½-4 mins or until cooked to your liking. Use a slotted spoon to transfer to a plate. Repeat with remaining eggs.",
+                    "Place the hash browns on serving plates. Top with spinach, bacon and poached eggs. Season with pepper and serve immediately."                
+                ]
+            },
+            "Tomato Sauce": {
+                "ingredients": {
+                    "Tomato": "Sauce"
+                },
+                "directions": [
+                    "Directions here"
+                ]
+            },
+            "Chicken Primavera": {
+                "ingredients": {
+                    "Boneless skinless chicken breasts": "2 breasts (1 1/4 to 1 1/2 lb.)  lb.) cut into 1-inch cubes",
+                    "salt": "2 1/2 tsp.",
+                    "Ground black pepper": "2 tsp.",
+                    "Butter": "4 tbsp.",
+                    "Olive oil": "1/4 cup",
+                    "Dried short pasta, such as penne, rotini, or cavatappi": "16 oz.",
+                    "Chicken Broth": "1 32-oz. container",
+                    "Carrots": "3 carrots, thinly sliced (about 2 cups)",
+                    "Asparagus pieces": "2 cups, about 1-inch long, from 1 bunch (woody stems removed)",
+                    "Frozen Peas": "1 1/2 cups fresh or frozen",
+                    "San Marzano or Cherry Tomatoes": "2 cup, halved",
+                    "Garlic Cloves": "6 cloves, grated",
+                    "Parmesan Cheese": "1 1/2 cup freshly grated",
+                    "Lemon zest": "1 lemon, zested then cut in half",
+                    "Fresh Basil": "1/2 cup chopped, plus more for garnish"
+                },
+                "directions": [
+                    "Season the chicken with 1 1/2 teaspoons of the salt and 1 teaspoon of the pepper. Add 2 tablespoons of the butter and all of the olive oil to a large Dutch oven; heat over medium-high heat.",
+                    "Add the seasoned chicken to the pan. Cook, stirring occasionally, until the chicken is lightly browned all over, about 5 minutes. Use a slotted spoon to transfer the chicken from the pan onto a plate and set aside.",
+                    "Add the pasta to the pan; stir to coat it in the oil mixture. Add the broth and 2 cups of water, and bring to a simmer. Reduce heat to medium or medium low to keep it simmering for 6 minutes, stirring occasionally to prevent sticking.", 
+                    "Stir in the carrots, asparagus, and peas. Cover the pot, and let cook until the pasta and vegetables are just tender, about 4 minutes.",
+                    "Uncover the pot. Add the tomatoes, grated garlic, and cooked chicken to the pan. Cook, stirring occasionally, for about 2 minutes to reheat the chicken.",
+                    "Remove from the heat and add the remaining 2 tablespoons butter, parmesan cheese, lemon zest and juice, and the remaining 1 teaspoon each of the salt and pepper; stir to combine.",
+                    "Stir in the basil just before serving. Top each serving with more parmesan and basil, if you like.",
+                ]
+            },
+            "Thai Red Curry Soup": {
+                "ingredients": {
+                    "Red Curry": "Soup"
+                },
+                "directions": [
+                    "Directions here"
+                ]
+            },
+            "Chocolate Chip Cookies": {
+                "ingredients": {
+                    "Choco": "Chips"
+                },
+                "directions": [
+                    "Directions here"
+                ]
+            },
+            "Hamburger Patties": {
+                "ingredients": {
+                    "Ground Beef": "1 lb",
+                    "Crushed saltine crackers or Panko bread crumbs": "1/4 cup",
+                    "Egg": "1 Large egg",
+                    "Worcestershire Sauce":" 1 tablespoon",
+                    "Almond Milk": "1 tablespoon",
+                    "Salt": "1/2 teaspoon",
+                    "Garlic Poweder": "1/2 teaspoon",
+                    "Onion Powder": "1/2 teaspoon",
+                    "Black Pepper": "1/4 teaspoon"
+                },
+                "directions": [
+                    "Set out a large mixing bowl. Add in the ground beef, crushed crackers, egg, Worcestershire sauce, milk, salt, garlic powder, onion powder, and pepper. Mix by hand until the meat mixture is smooth, but stop once the mixture looks even. (Overmixing can create a dense heavy texture.)",
+                    "Press the meat down in the bowl, into an even disk. Use a knife to cut and divide the hamburger patty mixture into 6 – 1/3 pound grill or skillet patties, or 12 thin griddle patties.",
+                    "Set out a baking sheet, lined with wax paper or foil, to hold the patties. One at a time, gather the patty mix and press firmly into patties. Shape them just slightly larger than the buns you plan to use, to account for shrinkage during cooking. Set the patties on the baking sheet. Use a spoon to press a dent in the center of each patty so they don't puff up as they cook. If you need to stack the patties separate them with a sheet of wax paper.",
+                    "Preheat the grill or a skillet to medium heat. (Approximately 350-400 degrees F.)",
+                    "For thick patties: Grill or fry the patties for 3-4 minutes per side.",
+                    "For thin patties: Cook on the griddle for 2 minutes per side.",
+                    "Stack the hot patties on hamburgers buns, and top with your favorite hamburgers toppings. Serve warm."
+                ]
+            },
+            "Thai Peanut Sauce": {
+                "ingredients": {
+                    "Natural, unsweetened Peanut Butter": "1/2 cup",
+                    "low sodium soy sauce use tamari or coconut aminos for gluten free": "2 tbs",
+                    "Rice Vinegar": "1 tbs",
+                    "Brown Sugar": "2 tbs",
+                    "Chili Garlic Sauce": "2 tsp",
+                    "Fresh Lime Juice": "1 tbs",
+                    "Garlic Cloves": "3 cloves pressed or grated",
+                    "Ginger Root": "1 tbs, grated",
+                    "Warm water": "2-4 tbs"
+                },
+                "directions": [
+                    "Combine all ingredients except water.  Whisk to fully combine.",
+                    "Add water, 1 tablespoon at a time, until desired consistency is reached. Use 2 tablespoons for a sauce and up to 4 if using it for a dressing."
+                ]
+            }
+        };
+
+        function showRecipe() {
+            var recipeName = document.getElementById("recipeOptions").value;
+            var recipeDetails = document.getElementById("recipeDetails");
+
+            if (recipeName in recipes) {
+                var ingredients = recipes[recipeName]["ingredients"];
+                var directions = recipes[recipeName]["directions"];
+
+                var html = "<h2>" + recipeName + "</h2>";
+                html += "<h3>Ingredients:</h3>";
+                html += "<ul>";
+                for (var ingredient in ingredients) {
+                    html += "<li>" + ingredient + ": " + ingredients[ingredient] + "</li>";
+                }
+                html += "</ul>";
+
+                html += "<h3>Directions:</h3>";
+                html += "<ol>";
+                for (var i = 0; i < directions.length; i++) {
+                    html += "<li>" + directions[i] + "</li>";
+                }
+                html += "</ol>";
+
+                recipeDetails.innerHTML = html;
+            } else {
+                recipeDetails.innerHTML = "<p>Select a recipe to view details.</p>";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
